@@ -2,12 +2,12 @@ FROM debian:stable-20221004-slim
 
 LABEL maintainer="rameshcreations"
 # Arguments
-ARG TERRAFORM_VERSION=1.2.4
+ARG TERRAFORM_VERSION=1.3.7
 ARG TERRAGRUNT_VERSION=0.38.4
 ARG DRIFTCTL_VERSION=0.37.0
 ARG TFSEC_VERSION=1.27.5
 ARG TFLINT_VERSION=0.39.3
-ARG INFRACOST_VERSION=0.10.11
+ARG INFRACOST_VERSION=0.10.16
 
 RUN apt-get update && apt-get install -y unzip curl git jq \
     && apt-get clean \
