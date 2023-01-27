@@ -8,6 +8,7 @@ ARG DRIFTCTL_VERSION=0.37.0
 ARG TFSEC_VERSION=1.28.1
 ARG TFLINT_VERSION=0.44.1
 ARG INFRACOST_VERSION=0.10.16
+ARG KUBECTL_VERSION=1.24.2
 
 RUN apt-get update && apt-get install -y unzip curl git jq \
     && apt-get clean \
@@ -50,6 +51,10 @@ RUN curl -sL https://github.com/infracost/infracost/releases/download/v${INFRACO
     && tar -xf infracost.tar.gz \
     && chmod 0755 infracost-linux-amd64 \
     && mv infracost-linux-amd64 /usr/local/bin/infracost
+
+# kubectl
+RUN curl -sLO https://dl.k8s.io/release/v${KUBECTL_VERSION}/bin/linux/amd64/kubectl \ 
+    && install -o root -g root -m 0755 kubectl /usr/local/bin/kubectl
 
 
 # cleanup
